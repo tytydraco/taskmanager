@@ -1,0 +1,27 @@
+name: TaskManager Run Once
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
+      timezone: 'America/Chicago'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      
+      - name: Dart pub get
+        run: dart pub get
+      
+      - name: Start bot
+        run: dart run bin/taskmanager.dart
+        env:
+          TOKEN: ${{ secrets.TOKEN }}

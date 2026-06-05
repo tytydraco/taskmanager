@@ -1,0 +1,58 @@
+chores:
+  - name: Trash Day
+    description: Take the trash to the curb.
+    days:
+      - Tuesday
+    daysBetween: 7
+    rotation: false
+    party:
+      - mcmaster9001
+      - guy_with_pants
+      - tytydraco
+  - name: Mowing
+    description: Mow the front and back lawn.
+    days:
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      - Sunday
+    daysBetween: 10
+    rotation: true
+    party:
+      - mcmaster9001
+      - guy_with_pants
+      - tytydraco
+  - name: Take out trash
+    description: Take the trash out to the can.
+    days:
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      - Sunday
+    daysBetween: 4
+    rotation: true
+    party:
+      - mcmaster9001
+      - guy_with_pants
+      - tytydraco
+  - name: Dishes
+    description: Load and unload the dishwasher.
+    days:
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      - Sunday
+    daysBetween: 4
+    rotation: true
+    party:
+      - mcmaster9001
+      - guy_with_pants
