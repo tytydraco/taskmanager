@@ -1,6 +1,16 @@
 chores:
+  - name: Trash Day (Early)
+    description: Take the trash to the curb, night before.
+    days:
+      - Monday
+    daysBetween: 7
+    rotation: false
+    party:
+      - mcmaster9001
+      - guy_with_pants
+      - tytydraco
   - name: Trash Day
-    description: Take the trash to the curb.
+    description: Take the trash to the curb, immediately.
     days:
       - Tuesday
     daysBetween: 7
