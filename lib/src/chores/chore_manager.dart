@@ -32,6 +32,20 @@ class ChoreManager {
     return chores.map((e) => Chore.fromYAML(e as YamlMap)).toSet();
   }
 
+  bool _matchesInterval(Chore chore, int daysSinceRef) {
+    if (chore.daysBetween == 0) return true;
+
+    // Weekly chores tied to specific weekdays use week-based intervals.
+    // Day-based modulo from referenceDay only aligns with the reference
+    // weekday, so e.g. Tuesday + daysBetween: 7 would never match.
+    if (chore.daysBetween % 7 == 0 && chore.days.length < 7) {
+      final weeksBetween = chore.daysBetween ~/ 7;
+      return (daysSinceRef ~/ 7) % weeksBetween == 0;
+    }
+
+    return daysSinceRef % chore.daysBetween == 0;
+  }
+
   /// Return a set of [Chore]s for today's date.
   Set<Chore> getTodaysChores() {
     final chores = _parseChores();
@@ -40,11 +54,7 @@ class ChoreManager {
 
     return chores.where((chore) {
       if (!chore.days.contains(weekday)) return false;
-      if (chore.daysBetween != 0 && daysSinceRef % chore.daysBetween != 0) {
-        return false;
-      }
-
-      return true;
+      return _matchesInterval(chore, daysSinceRef);
     }).toSet();
   }
 
